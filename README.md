@@ -3,8 +3,6 @@
 This tool was created to automate the process of installing and configuring raids on servers in a linux environment. It was developed for 
 network professionals, to save time and ease of use.
 
-![]()
-
 ### [-] Install [-]
 
 Must be run as root user:
