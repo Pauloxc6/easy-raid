@@ -435,7 +435,7 @@ while true ;do
         *)
             echo -e "\e[31;1m[*] Error in the program! [*]\n\e[0m"
             sleep 1
-            exit 1 ;;
+            exit 1;;
 
     esac
 

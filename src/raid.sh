@@ -101,7 +101,7 @@ while true ;do
 
         exit|0)
             echo -e "\e[32;1m[*] Exiting ..... [*]\n\e[0m"
-            exit ;;
+            exit 1;;
 
         clear)
             clear ;;
@@ -130,7 +130,7 @@ while true ;do
         *)
             echo -e "\e[31;1m[*] Error in the program! [*]\n\e[0m"
             sleep 1
-            exit 1 ;;
+            exit 1;;
 
     esac
 

@@ -29,7 +29,7 @@ banner1
 
 function help() {
 
-    echo -e "Help Menu: "
+    echo -e "\e[37;1mHelp Menu: "
     echo -e ""
     echo -e "\t \e[37;1mhelp        | Help Menu"
     echo -e "\t \e[37;1mexit        | Exit the program"
