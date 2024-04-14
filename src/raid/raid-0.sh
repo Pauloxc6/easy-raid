@@ -76,31 +76,31 @@ function raid0() {
         fi
 
         # Criação da Raid | Montagem | Tipo de filesystem
-        echo -e "\e[30;1m[*] Criando a raid [*]"
+        echo -e "\e[30;1m[*] Creating the raid [*]"
         echo -e "\e[0m"
         mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2
 
-        echo -e "\e[30;1m[*] Criando o filesystem [*]"
+        echo -e "\e[30;1m[*] Creating the filesystem [*]"
         echo -e "\e[0m"
         mkfs.$fsys /dev/$nameraid
 
-        echo -e "\e[30;1m[*] Criando o diretorio [*]"
+        echo -e "\e[30;1m[*] Creating the directory [*]"
         echo -e "\e[0m"
         mkdir -p /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Motando /dev/$nameraid /mnt/$nameraid [*]"
+        echo -e "\e[30;1m[*] Mounting /dev/$nameraid in /mnt/$nameraid [*]"
         echo -e "\e[0m"
         mount /dev/$nameraid /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Criando a configuração do mdadm [*]"
+        echo -e "\e[30;1m[*] Creating the mdadm configuration [*]"
         echo -e "\e[0m"
         mdadm --detail --scan >> /etc/mdadm/mdadm.conf
 
-        echo -e "\e[30;1m[*] Atualizando o initramfs [*]"
+        echo -e "\e[30;1m[*] Updating initramfs [*]"
         echo -e "\e[0m"
         update-initramfs -u
 
-        echo -e "\e[30;1m[*] Criando a motagem da raid em /etc/fstab [*]"
+        echo -e "\e[30;1m[*] Creating the raid mount in /etc/fstab [*]"
         echo -e "\e[0m"
         echo "/dev/$nameraid /mnt/$nameraid $fsys defaults,nofail,discard 0 0" >> /etc/fstab
 
@@ -112,37 +112,37 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys -ne "ext4" || $fsys -ne "btrfs" ]];then
+        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
 
         # Criação da Raid | Montagem | Tipo de filesystem
-        echo -e "\e[30;1m[*] Criando a raid [*]"
+        echo -e "\e[30;1m[*] Creating the raid [*]"
         echo -e "\e[0m"
         mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3
 
-        echo -e "\e[30;1m[*] Criando o filesystem [*]"
+        echo -e "\e[30;1m[*] Creating the filesystem [*]"
         echo -e "\e[0m"
         mkfs.$fsys /dev/$nameraid
         
-        echo -e "\e[30;1m[*] Criando o diretorio [*]"
+        echo -e "\e[30;1m[*] Creating the directory [*]"
         echo -e "\e[0m"
         mkdir -p /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Motando /dev/$nameraid /mnt/$nameraid [*]"
+        echo -e "\e[30;1m[*] Mounting /dev/$nameraid in /mnt/$nameraid [*]"
         echo -e "\e[0m"
         mount /dev/$nameraid /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Criando a configuração do mdadm [*]"
+        echo -e "\e[30;1m[*] Creating the mdadm configuration [*]"
         echo -e "\e[0m"
         mdadm --detail --scan >> /etc/mdadm/mdadm.conf
 
-        echo -e "\e[30;1m[*] Atualizando o initramfs [*]"
+        echo -e "\e[30;1m[*] Updating initramfs [*]"
         echo -e "\e[0m"
         update-initramfs -u
 
-        echo -e "\e[30;1m[*] Criando a motagem da raid em /etc/fstab [*]"
+        echo -e "\e[30;1m[*] Creating the raid mount in /etc/fstab [*]"
         echo -e "\e[0m"
         echo "/dev/$nameraid /mnt/$nameraid $fsys defaults,nofail,discard 0 0" >> /etc/fstab
 
@@ -155,37 +155,37 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys -ne "ext4" || $fsys -ne "btrfs" ]];then
+        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
 
         # Criação da Raid | Montagem | Tipo de filesystem
-        echo -e "\e[30;1m[*] Criando a raid [*]"
+        echo -e "\e[30;1m[*] Creating the raid [*]"
         echo -e "\e[0m"
         mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4
 
-        echo -e "\e[30;1m[*] Criando o filesystem [*]"
+        echo -e "\e[30;1m[*] Creating the filesystem [*]"
         echo -e "\e[0m"
         mkfs.$fsys /dev/$nameraid
 
-        echo -e "\e[30;1m[*] Criando o diretorio [*]"
+        echo -e "\e[30;1m[*] Creating the directory [*]"
         echo -e "\e[0m"
         mkdir -p /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Motando /dev/$nameraid /mnt/$nameraid [*]"
+        echo -e "\e[30;1m[*] Mounting /dev/$nameraid in /mnt/$nameraid [*]"
         echo -e "\e[0m"
         mount /dev/$nameraid /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Criando a configuração do mdadm [*]"
+        echo -e "\e[30;1m[*] Creating the mdadm configuration [*]"
         echo -e "\e[0m"
         mdadm --detail --scan >> /etc/mdadm/mdadm.conf
 
-        echo -e "\e[30;1m[*] Atualizando o initramfs [*]"
+        echo -e "\e[30;1m[*] Updating initramfs [*]"
         echo -e "\e[0m"
         update-initramfs -u
 
-        echo -e "\e[30;1m[*] Criando a motagem da raid em /etc/fstab [*]"
+        echo -e "\e[30;1m[*] Creating the raid mount in /etc/fstab [*]"
         echo -e "\e[0m"
         echo "/dev/$nameraid /mnt/$nameraid $fsys defaults,nofail,discard 0 0" >> /etc/fstab
 
@@ -199,37 +199,37 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys -ne "ext4" || $fsys -ne "btrfs" ]];then
+        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
 
         # Criação da Raid | Montagem | Tipo de filesystem
-        echo -e "\e[30;1m[*] Criando a raid [*]"
+        echo -e "\e[30;1m[*] Creating the raid [*]"
         echo -e "\e[0m"
         mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5
 
-        echo -e "\e[30;1m[*] Criando o filesystem [*]"
+        echo -e "\e[30;1m[*] Creating the filesystem [*]"
         echo -e "\e[0m"
         mkfs.$fsys /dev/$nameraid
 
-        echo -e "\e[30;1m[*] Criando o diretorio [*]"
+        echo -e "\e[30;1m[*] Creating the directory [*]"
         echo -e "\e[0m"
         mkdir -p /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Motando /dev/$nameraid /mnt/$nameraid [*]"
+        echo -e "\e[30;1m[*] Mounting /dev/$nameraid in /mnt/$nameraid [*]"
         echo -e "\e[0m"
         mount /dev/$nameraid /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Criando a configuração do mdadm [*]"
+        echo -e "\e[30;1m[*] Creating the mdadm configuration C[*]"
         echo -e "\e[0m"
         mdadm --detail --scan >> /etc/mdadm/mdadm.conf
 
-        echo -e "\e[30;1m[*] Atualizando o initramfs [*]"
+        echo -e "\e[30;1m[*] Updating initramfs [*]"
         echo -e "\e[0m"
         update-initramfs -u
 
-        echo -e "\e[30;1m[*] Criando a motagem da raid em /etc/fstab [*]"
+        echo -e "\e[30;1m[*] Creating the raid mount in /etc/fstab [*]"
         echo -e "\e[0m"
         echo "/dev/$nameraid /mnt/$nameraid $fsys defaults,nofail,discard 0 0" >> /etc/fstab
 
@@ -244,37 +244,37 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys -ne "ext4" || $fsys -ne "btrfs" ]];then
+        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
 
         # Criação da Raid | Montagem | Tipo de filesystem
-        echo -e "\e[30;1m[*] Criando a raid [*]"
+        echo -e "\e[30;1m[*] Creating the raid [*]"
         echo -e "\e[0m"
         mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5 $dev6
         
-        echo -e "\e[30;1m[*] Criando o filesystem [*]"
+        echo -e "\e[30;1m[*] Creating the filesystem [*]"
         echo -e "\e[0m"
         mkfs.$fsys /dev/$nameraid
 
-        echo -e "\e[30;1m[*] Criando o diretorio [*]"
+        echo -e "\e[30;1m[*] Creating the directory [*]"
         echo -e "\e[0m"
         mkdir -p /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Motando /dev/$nameraid /mnt/$nameraid [*]"
+        echo -e "\e[30;1m[*] Mounting /dev/$nameraid in /mnt/$nameraid [*]"
         echo -e "\e[0m"
         mount /dev/$nameraid /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Criando a configuração do mdadm [*]"
+        echo -e "\e[30;1m[*] Creating the mdadm configuration [*]"
         echo -e "\e[0m"
         mdadm --detail --scan >> /etc/mdadm/mdadm.conf
 
-        echo -e "\e[30;1m[*] Atualizando o initramfs [*]"
+        echo -e "\e[30;1m[*] Updating initramfs [*]"
         echo -e "\e[0m"
         update-initramfs -u
 
-        echo -e "\e[30;1m[*] Criando a motagem da raid em /etc/fstab [*]"
+        echo -e "\e[30;1m[*] Creating the raid mount in /etc/fstab [*]"
         echo -e "\e[0m"
         echo "/dev/$nameraid /mnt/$nameraid $fsys defaults,nofail,discard 0 0" >> /etc/fstab
 
@@ -290,37 +290,37 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys -ne "ext4" || $fsys -ne "btrfs" ]];then
+        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
 
         # Criação da Raid | Montagem | Tipo de filesystem
-        echo -e "\e[30;1m[*] Criando a raid [*]"
+        echo -e "\e[30;1m[*] Creating the raid [*]"
         echo -e "\e[0m"
         mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5 $dev6 $dev7
         
-        echo -e "\e[30;1m[*] Criando o filesystem [*]"
+        echo -e "\e[30;1m[*] Creating the filesystem [*]"
         echo -e "\e[0m"
         mkfs.$fsys /dev/$nameraid
 
-        echo -e "\e[30;1m[*] Criando o diretorio [*]"
+        echo -e "\e[30;1m[*] Creating the directory [*]"
         echo -e "\e[0m"
         mkdir -p /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Motando /dev/$nameraid /mnt/$nameraid [*]"
+        echo -e "\e[30;1m[*] Mounting /dev/$nameraid in /mnt/$nameraid [*]"
         echo -e "\e[0m"
         mount /dev/$nameraid /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Criando a configuração do mdadm [*]"
+        echo -e "\e[30;1m[*] Creating the mdadm configuration [*]"
         echo -e "\e[0m"
         mdadm --detail --scan >> /etc/mdadm/mdadm.conf
 
-        echo -e "\e[30;1m[*] Atualizando o initramfs [*]"
+        echo -e "\e[30;1m[*] Updating initramfs [*]"
         echo -e "\e[0m"
         update-initramfs -u
 
-        echo -e "\e[30;1m[*] Criando a motagem da raid em /etc/fstab [*]"
+        echo -e "\e[30;1m[*] Creating the raid mount in /etc/fstab [*]"
         echo -e "\e[0m"
         echo "/dev/$nameraid /mnt/$nameraid $fsys defaults,nofail,discard 0 0" >> /etc/fstab
 
@@ -337,45 +337,45 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys -ne "ext4" || $fsys -ne "btrfs" ]];then
+        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
 
         # Criação da Raid | Montagem | Tipo de filesystem
-        echo -e "\e[30;1m[*] Criando a raid [*]"
+        echo -e "\e[30;1m[*] Creating the raid [*]"
         echo -e "\e[0m"
         mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5 $dev6 $dev7 $dev8
         
-        echo -e "\e[30;1m[*] Criando o filesystem [*]"
+        echo -e "\e[30;1m[*] Creating the filesystem [*]"
         echo -e "\e[0m"
         mkfs.$fsys /dev/$nameraid
 
-        echo -e "\e[30;1m[*] Criando o diretorio [*]"
+        echo -e "\e[30;1m[*] Creating the directory [*]"
         echo -e "\e[0m"
         mkdir -p /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Motando /dev/$nameraid /mnt/$nameraid [*]"
+        echo -e "\e[30;1m[*] Mounting /dev/$nameraid in /mnt/$nameraid [*]"
         echo -e "\e[0m"
         mount /dev/$nameraid /mnt/$nameraid
 
-        echo -e "\e[30;1m[*] Criando a configuração do mdadm [*]"
+        echo -e "\e[30;1m[*] Creating the mdadm configuration [*]"
         echo -e "\e[0m"
         mdadm --detail --scan >> /etc/mdadm/mdadm.conf
 
-        echo -e "\e[30;1m[*] Atualizando o initramfs [*]"
+        echo -e "\e[30;1m[*] Updating initramfs [*]"
         echo -e "\e[0m"
         update-initramfs -u
 
-        echo -e "\e[30;1m[*] Criando a motagem da raid em /etc/fstab [*]"
+        echo -e "\e[30;1m[*] Creating the raid mount in /etc/fstab [*]"
         echo -e "\e[0m"
         echo "/dev/$nameraid /mnt/$nameraid $fsys defaults,nofail,discard 0 0" >> /etc/fstab
 
     elif [[ $hmd -lt 1 || $hmd -gt 9 ]];then
-        echo -e "\e[31;1mPlease, choose between 2 or 8 devices!\e[0m"
+        echo -e "\e[31;1mPlease, choose between 2 to 8 devices!\e[0m"
         exit 1
     else
-        echo -e "\e[31;1m[+] Limite Atingindo para o programa [+]\e[0m"
+        echo -e "\e[31;1m[+] Limit reached for the program [+]\e[0m"
     fi
 }
 
@@ -432,7 +432,7 @@ while true ;do
             echo -e "\e[0m";;
 
         *)
-            echo -e "\e[31;1m[*] Erro no programa! [*]\n\e[0m"
+            echo -e "\e[31;1m[*] Error in the program! [*]\n\e[0m"
             sleep 1
             exit 1 ;;
 
@@ -443,6 +443,6 @@ done
 #----------------------------
 #exit
 #----------------------------
-echo -e "\e[32;1m[*] Exit ..... [*]\n\e[0m"
+echo -e "\e[32;1m[*] Exiting ..... [*]\n\e[0m"
 sleep 1
 exit 0

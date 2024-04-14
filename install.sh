@@ -38,5 +38,5 @@ python3 -m pip install figlet
 #----------------------------
 #exit
 #----------------------------
-echo -e "\e[1;77m[*] Exit ..... [*]\n\e[1;0m"
+echo -e "\e[1;77m[*] Exiting ..... [*]\n\e[1;0m"
 exit 0

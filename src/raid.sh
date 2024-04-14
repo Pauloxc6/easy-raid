@@ -128,7 +128,7 @@ while true ;do
             echo -e "\e[0m";;
 
         *)
-            echo -e "\e[31;1m[*] Erro no programa! [*]\n\e[0m"
+            echo -e "\e[31;1m[*] Error in the program! [*]\n\e[0m"
             sleep 1
             exit 1 ;;
 
@@ -139,6 +139,6 @@ done
 #----------------------------
 #exit
 #----------------------------
-echo -e "\e[32;1m[*] Exit ..... [*]\n\e[0m"
+echo -e "\e[32;1m[*] Exitint ..... [*]\n\e[0m"
 sleep 1
 exit 0
