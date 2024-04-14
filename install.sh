@@ -3,7 +3,8 @@
 # Root Testing
 #-----------------------------
 if [[ "$(id -u)" -ne 0 ]];then
-    echo -e "\e[37;1mPlease, run this program as root!\n\e[0m"
+    echo -e "\e[37;1mPlease, run this program as root!\e[0m"
+    echo -e "\e[37;1mHelp: sudo bash install.sh or sudo ./install.sh\e[0m"
     exit 1
 fi
 

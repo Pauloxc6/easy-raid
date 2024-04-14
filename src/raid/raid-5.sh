@@ -12,7 +12,7 @@ fi
 # Banner
 #------------------------------------
 function banner1(){
-    figlet Raid 0
+    figlet Raid 5
     echo -e "\e[37;1mGithub: @Pauloxc6 | \t $(date) \e[0m"
 }
 
@@ -57,7 +57,7 @@ function debug() {
 
 function raid0() {
 
-    echo -e "\e[37;1mRaid 0:"
+    echo -e "\e[37;1mRaid 5:"
 
     read -p "Name for RAID (Ex: md0): " nameraid
 
@@ -78,7 +78,7 @@ function raid0() {
         # Criação da Raid | Montagem | Tipo de filesystem
         echo -e "\e[30;1m[*] Criando a raid [*]"
         echo -e "\e[0m"
-        mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2
+        mdadm --create --verbose /dev/$nameraid --level=5 --raid-devices $dev1 $dev2
 
         echo -e "\e[30;1m[*] Criando o filesystem [*]"
         echo -e "\e[0m"
@@ -120,7 +120,7 @@ function raid0() {
         # Criação da Raid | Montagem | Tipo de filesystem
         echo -e "\e[30;1m[*] Criando a raid [*]"
         echo -e "\e[0m"
-        mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3
+        mdadm --create --verbose /dev/$nameraid --level=5 --raid-devices $dev1 $dev2 $dev3
 
         echo -e "\e[30;1m[*] Criando o filesystem [*]"
         echo -e "\e[0m"
@@ -163,7 +163,7 @@ function raid0() {
         # Criação da Raid | Montagem | Tipo de filesystem
         echo -e "\e[30;1m[*] Criando a raid [*]"
         echo -e "\e[0m"
-        mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4
+        mdadm --create --verbose /dev/$nameraid --level=5 --raid-devices $dev1 $dev2 $dev3 $dev4
 
         echo -e "\e[30;1m[*] Criando o filesystem [*]"
         echo -e "\e[0m"
@@ -207,7 +207,7 @@ function raid0() {
         # Criação da Raid | Montagem | Tipo de filesystem
         echo -e "\e[30;1m[*] Criando a raid [*]"
         echo -e "\e[0m"
-        mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5
+        mdadm --create --verbose /dev/$nameraid --level=5 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5
 
         echo -e "\e[30;1m[*] Criando o filesystem [*]"
         echo -e "\e[0m"
@@ -252,7 +252,7 @@ function raid0() {
         # Criação da Raid | Montagem | Tipo de filesystem
         echo -e "\e[30;1m[*] Criando a raid [*]"
         echo -e "\e[0m"
-        mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5 $dev6
+        mdadm --create --verbose /dev/$nameraid --level=5 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5 $dev6
         
         echo -e "\e[30;1m[*] Criando o filesystem [*]"
         echo -e "\e[0m"
@@ -298,7 +298,7 @@ function raid0() {
         # Criação da Raid | Montagem | Tipo de filesystem
         echo -e "\e[30;1m[*] Criando a raid [*]"
         echo -e "\e[0m"
-        mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5 $dev6 $dev7
+        mdadm --create --verbose /dev/$nameraid --level=5 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5 $dev6 $dev7
         
         echo -e "\e[30;1m[*] Criando o filesystem [*]"
         echo -e "\e[0m"
@@ -345,7 +345,7 @@ function raid0() {
         # Criação da Raid | Montagem | Tipo de filesystem
         echo -e "\e[30;1m[*] Criando a raid [*]"
         echo -e "\e[0m"
-        mdadm --create --verbose /dev/$nameraid --level=0 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5 $dev6 $dev7 $dev8
+        mdadm --create --verbose /dev/$nameraid --level=5 --raid-devices $dev1 $dev2 $dev3 $dev4 $dev5 $dev6 $dev7 $dev8
         
         echo -e "\e[30;1m[*] Criando o filesystem [*]"
         echo -e "\e[0m"
@@ -374,6 +374,7 @@ function raid0() {
     elif [[ $hmd -lt 1 || $hmd -gt 9 ]];then
         echo -e "\e[31;1mPlease, choose between 2 or 8 devices!\e[0m"
         exit 1
+
     else
         echo -e "\e[31;1m[+] Limite Atingindo para o programa [+]\e[0m"
     fi
