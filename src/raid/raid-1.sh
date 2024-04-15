@@ -4,7 +4,7 @@
 #-----------------------------
 if [[ "$(id -u)" -ne 0 ]];then
     echo -e "\e[37;1mPlease, run this program as root!\e[0m"
-    echo -e "\e[37;1mHelp: sudo bash remove.sh or sudo ./remove.sh\e[0m"
+    echo -e "\e[37;1mHelp: sudo bash raid-1.sh or sudo ./raid-1.sh\e[0m"
     exit 1
 fi
 
@@ -65,12 +65,18 @@ function raid0() {
 
     if [[ $hmd -eq 2 ]];then
 
+        filemdadm=/etc/mdadm/mdadm.conf
+        if [[ -e "$filemdadm" ]]; then
+            echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+            exit
+        fi
+
         read -p "Device 1 (Ex: /dev/sdb): " dev1
         read -p "Device 2 (EX: /dev/sdc): " dev2
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\n\e[0m"
             exit 1
         fi
@@ -106,13 +112,19 @@ function raid0() {
 
     elif [[ $hmd -eq 3 ]]; then
 
+        filemdadm=/etc/mdadm/mdadm.conf
+        if [[ -e "$filemdadm" ]]; then
+            echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+            exit
+        fi
+
         read -p "Device 1 (Ex: /dev/sdb): " dev1
         read -p "Device 2 (EX: /dev/sdc): " dev2
         read -p "Device 3 (EX: /dev/sdd): " dev3
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -148,6 +160,12 @@ function raid0() {
 
     elif [[ $hmd -eq 4 ]]; then
 
+        filemdadm=/etc/mdadm/mdadm.conf
+        if [[ -e "$filemdadm" ]]; then
+            echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+            exit
+        fi
+
         read -p "Device 1 (Ex: /dev/sdb): " dev1
         read -p "Device 2 (EX: /dev/sdc): " dev2
         read -p "Device 3 (EX: /dev/sdd): " dev3
@@ -155,7 +173,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -191,6 +209,12 @@ function raid0() {
 
     elif [[ $hmd -eq 5 ]]; then
 
+        filemdadm=/etc/mdadm/mdadm.conf
+        if [[ -e "$filemdadm" ]]; then
+            echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+            exit
+        fi
+
         read -p "Device 1 (Ex: /dev/sdb): " dev1
         read -p "Device 2 (EX: /dev/sdc): " dev2
         read -p "Device 3 (EX: /dev/sdd): " dev3
@@ -199,7 +223,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -235,6 +259,12 @@ function raid0() {
 
     elif [[ $hmd -eq 6 ]]; then
 
+        filemdadm=/etc/mdadm/mdadm.conf
+        if [[ -e "$filemdadm" ]]; then
+            echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+            exit
+        fi
+
         read -p "Device 1 (Ex: /dev/sdb): " dev1
         read -p "Device 2 (EX: /dev/sdc): " dev2
         read -p "Device 3 (EX: /dev/sdd): " dev3
@@ -244,7 +274,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -280,6 +310,12 @@ function raid0() {
 
     elif [[ $hmd -eq 7 ]]; then
 
+        filemdadm=/etc/mdadm/mdadm.conf
+        if [[ -e "$filemdadm" ]]; then
+            echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+            exit
+        fi
+
         read -p "Device 1 (Ex: /dev/sdb): " dev1
         read -p "Device 2 (EX: /dev/sdc): " dev2
         read -p "Device 3 (EX: /dev/sdd): " dev3
@@ -290,7 +326,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -326,6 +362,12 @@ function raid0() {
 
     elif [[ $hmd -eq 8 ]]; then
 
+        filemdadm=/etc/mdadm/mdadm.conf
+        if [[ -e "$filemdadm" ]]; then
+            echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+            exit
+        fi
+
         read -p "Device 1 (Ex: /dev/sdb): " dev1
         read -p "Device 2 (EX: /dev/sdc): " dev2
         read -p "Device 3 (EX: /dev/sdd): " dev3
@@ -337,7 +379,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $fsys != "ext4" || $fsys != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -394,7 +436,7 @@ while true ;do
 
     echo -e "\e[0m"
 
-    read -p "root@server:~/easy-raid/# " opt
+    read -p "root@server:~/easy-raid/src/raid# " opt
 
     # Testing
     case $opt in

@@ -4,7 +4,7 @@
 #-----------------------------
 if [[ "$(id -u)" -ne 0 ]];then
     echo -e "\e[37;1mPlease, run this program as root!\e[0m"
-    echo -e "\e[37;1mHelp: sudo bash remove.sh or sudo ./remove.sh\e[0m"
+    echo -e "\e[37;1mHelp: sudo bash raid.sh or sudo ./raid.sh\e[0m"
     exit 1
 fi
 
@@ -14,7 +14,7 @@ fi
 function banner1(){
 
     figlet Easy Raid
-    echo -e "\e[33;1mGithub: @pauloxc6 | \t $(date)\e[0m"
+    echo -e "\e[33;1mGithub: @Pauloxc6 | \t $(date)\e[0m"
 }
 
 banner1
@@ -46,6 +46,12 @@ function debug() {
 }
 
 function sr() {
+
+    filemdadm=/etc/mdadm/mdadm.conf
+    if [[ -e "$filemdadm" ]]; then
+        echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+        exit
+    fi
 
     echo ""
     echo -e "\e[37;1mRaids: "

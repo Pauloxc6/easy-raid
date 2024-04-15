@@ -14,7 +14,7 @@ fi
 function banner1(){
 
     figlet Remove Raid
-    echo -e "\e[33;1mGithub: @pauloxc6 | \t $(date) \e[0m"
+    echo -e "\e[33;1mGithub: @Pauloxc6 | \t $(date) \e[0m"
 }
 
 banner1
@@ -46,26 +46,54 @@ function debug() {
 
 function sr() {
 
+    filemdadm=/etc/mdadm/mdadm.conf
+    if [[ -e "$filemdadm" ]]; then
+        echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+        exit
+    fi
+
     echo ""
     echo -e "\e[37;1mRaids: "
     echo -e "\e[34;1m"
-    cat /etc/mdadm/mdadm.conf | awk '/ARRAY/ {print; next} {print "\t" $0}' | grep -vE "#|HOMEHOST <system>|MAILADDR root" | sed '/^$/d' | tr -d "\n"
+    cat /etc/mdadm/mdadm.conf | awk '/ARRAY/ {print; next} {print $0}' | grep -vE "#|HOMEHOST <system>|MAILADDR root" | sed '/^$/d' | tr -d "\n" | echo -e "\n"
 
     savedev=$(cat /etc/mdadm/mdadm.conf | grep ARRAY | cut -d " " -f2)
 
-    echo -e "\e[37;1mDevices: \e[34;1m"
+    if [[ -z $savedev ]]; then
+        echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
+        exit
+    else
+        continue
+    fi
+
+    echo -e "\e[37;1m\nDevices: \e[34;1m"
     mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "$savedev:" | awk '/$savedev/ {print; next} {print "\t" $0}'
 
     echo -e "\e[0m"
 }
 
 function rr(){
+
+    filemdadm=/etc/mdadm/mdadm.conf
+    if [[ -e "$filemdadm" ]]; then
+        echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
+        exit
+    fi
+
     savedev=$(cat /etc/mdadm/mdadm.conf | grep ARRAY | cut -d " " -f2)
     devis=$(mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "/dev/$savedev:")
 
+    if [[ -z $savedev && -z $devis ]]; then
+        echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
+        exit
+    else
+        continue
+    fi
+
+    echo -e "\e[37;1mStop /dev/$savedev\e[0m"    
     mdadm --stop $savedev
 
-    for items in "${devs[@]}";do
+    for items in "${devis[@]}";do
         echo -e "\e[37;1mZero Superblock : $items \e[37;1m"
         mdadm --zero-superblock $items
     done
