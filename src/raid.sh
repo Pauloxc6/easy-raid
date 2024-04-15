@@ -48,7 +48,7 @@ function debug() {
 function sr() {
 
     filemdadm=/etc/mdadm/mdadm.conf
-    if [[ -e "$filemdadm" ]]; then
+    if [[ ! -e "$filemdadm" ]]; then
         echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
         exit
     fi

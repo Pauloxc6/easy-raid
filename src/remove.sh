@@ -47,7 +47,7 @@ function debug() {
 function sr() {
 
     filemdadm=/etc/mdadm/mdadm.conf
-    if [[ -e "$filemdadm" ]]; then
+    if [[ ! -e "$filemdadm" ]]; then
         echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
         exit
     fi
@@ -75,7 +75,7 @@ function sr() {
 function rr(){
 
     filemdadm=/etc/mdadm/mdadm.conf
-    if [[ -e "$filemdadm" ]]; then
+    if [[ ! -e "$filemdadm" ]]; then
         echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
         exit
     fi
@@ -92,6 +92,9 @@ function rr(){
 
     echo -e "\e[37;1mStop /dev/$savedev\e[0m"    
     mdadm --stop $savedev
+
+    echo -e "\e[37;1mRemove /dev/$savedev\e[0m"    
+    mdadm --remove $savedev
 
     for items in "${devis[@]}";do
         echo -e "\e[37;1mZero Superblock : $items \e[37;1m"

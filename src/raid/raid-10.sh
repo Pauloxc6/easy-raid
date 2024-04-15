@@ -66,7 +66,7 @@ function raid0() {
     if [[ $hmd -eq 2 ]];then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -76,7 +76,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\n\e[0m"
             exit 1
         fi
@@ -113,7 +113,7 @@ function raid0() {
     elif [[ $hmd -eq 3 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -124,7 +124,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -161,7 +161,7 @@ function raid0() {
     elif [[ $hmd -eq 4 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -173,7 +173,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -210,7 +210,7 @@ function raid0() {
     elif [[ $hmd -eq 5 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -223,7 +223,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -260,7 +260,7 @@ function raid0() {
     elif [[ $hmd -eq 6 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -274,7 +274,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -311,7 +311,7 @@ function raid0() {
     elif [[ $hmd -eq 7 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -326,7 +326,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ $"fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ $"fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -363,7 +363,7 @@ function raid0() {
     elif [[ $hmd -eq 8 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -379,7 +379,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
