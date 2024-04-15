@@ -76,7 +76,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\n\e[0m"
             exit 1
         fi
@@ -124,7 +124,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -173,7 +173,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -223,7 +223,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -274,7 +274,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -326,7 +326,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi
@@ -379,7 +379,7 @@ function raid0() {
 
         read -p "Filesystem (ext4 ou btrfs): " fsys
 
-        if [[ "$fsys" != "ext4" || "$fsys" != "btrfs" ]];then
+        if [[ "$fsys" != "ext4" && "$fsys" != "btrfs" ]];then
             echo -e "\e[31;1mPlease, choose ext4 or btrfs!\e[0m"
             exit 1
         fi

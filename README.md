@@ -17,7 +17,7 @@ Must be run as root user:
 Inside the tool, type ``help`` command to get help:
 
 ```
-root@server:~/easy-raid/# help    
+root@server:~/easy-raid/# **help**    
 Help Menu: 
 
 	help        | Help Menu
