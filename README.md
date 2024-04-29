@@ -17,7 +17,7 @@ Must be run as root user:
 Inside the tool, type ``help`` command to get help:
 
 ```
-root@server:~/easy-raid/# **help**    
+root@server:~/easy-raid/# help  
 Help Menu: 
 
 	help        | Help Menu
@@ -32,6 +32,13 @@ Menu:
 	0. Exit
 
 ```
+
+### [-] Distro Suport [-]
+
+	1. Debian
+	2. Ubuntu
+	3. Void Linux
+	4. FreeBSD
 
 ## License
 !()[https://github.com/Pauloxc6/easy-raid/blob/main/LICENSE]

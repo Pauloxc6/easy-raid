@@ -4,7 +4,7 @@
 #-----------------------------
 if [[ "$(id -u)" -ne 0 ]];then
     echo -e "\e[37;1mPlease, run this program as root!\e[0m"
-    echo -e "\e[37;1mHelp: sudo bash main.sh or sudo ./main.sh\e[0m"
+    echo -e "\e[37;1mHelp: sudo bash part.sh or sudo ./part.sh\e[0m"
     exit 1
 fi
 
@@ -13,7 +13,7 @@ fi
 #------------------------------------
 function banner1(){
 
-    figlet Easy Raid
+    figlet Partition
     echo -e "\e[33;1mGithub: @Pauloxc6 | \t $(date) \e[0m"
 }
 
@@ -36,6 +36,7 @@ function help() {
     echo -e "\t \e[37;1mclear       | Clean the screen"
     echo -e "\t \e[37;1mback        | Go back to the root"
     echo -e "\t \e[37;1mbanner      | Activate the Banner"
+    echo -e "\t \e[37;1mdevices     | Active Devices"
     echo -e "\e[0m"
 }
 
@@ -52,26 +53,26 @@ while true ;do
     # Menu
     #----------------------------
     echo -e "\e[37;1mMenu: "
-    echo -e "\t \e[37;1m1. Raid Config"
-    echo -e "\t \e[37;1m2. Remove Raid"
-    echo -e "\t \e[37;1m3. Partition Config"
+    echo -e "\t \e[37;1m1. Parted"
+    echo -e "\t \e[37;1m2. Fdisk"
+    echo -e "\t \e[37;1m3. Cfdisk"
     echo -e "\t \e[37;1m0. Exit"
 
     echo -e "\e[0m"
 
-    read -p "root@server:~/easy-raid/# " opt
+    read -p "root@server:~/easy-raid/src/# " opt
 
     # Testing
     case $opt in
 
         1)
-            ./src/raid.sh ;;
+            ./partition/part-1.sh ;;
 
         2)
-            ./src/remove.sh ;;
+            ./partition/part-2.sh ;;
 
         3)
-            ./src/part.sh ;;
+            ./partition/part-3.sh ;;
 
         #-----------------------------------------
        
@@ -96,9 +97,15 @@ while true ;do
             echo -e "\e[37;1mVersion: 1.0\e[0m" 
             echo "" ;;
 
+        devices)
+            echo ""
+            echo -e "\e[37;1mDevices: "
+            echo -e "\e[34;1m"
+            lsblk -n | awk '/NAME/ {print; next} {print "\t" $1, "(" $4 ")", $6}' | grep -vE "├─|└─" 
+            echo -e "\e[0m";;
+
         *)
             echo -e "\e[31;1m[*] Error in the program! [*]\n\e[0m"
-            sleep 1
             exit 1 ;;
 
     esac
