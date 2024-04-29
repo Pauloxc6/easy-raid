@@ -471,7 +471,7 @@ while true ;do
             echo ""
             echo -e "\e[37;1mDevices: "
             echo -e "\e[34;1m"
-            lsblk -n | awk '/NAME/ {print; next} {print "\t" $1}' | grep -vE "├─|└─" 
+            lsblk -n | awk '/NAME/ {print; next} {print "\t" $1, "(" $4 ")", $6}' | grep -vE "├─|└─" 
             echo -e "\e[0m";;
 
         *)
