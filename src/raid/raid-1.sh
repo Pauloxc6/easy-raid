@@ -66,7 +66,7 @@ function raid0() {
     if [[ $hmd -eq 2 ]];then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -113,7 +113,7 @@ function raid0() {
     elif [[ $hmd -eq 3 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -161,7 +161,7 @@ function raid0() {
     elif [[ $hmd -eq 4 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -210,7 +210,7 @@ function raid0() {
     elif [[ $hmd -eq 5 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -260,7 +260,7 @@ function raid0() {
     elif [[ $hmd -eq 6 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -311,7 +311,7 @@ function raid0() {
     elif [[ $hmd -eq 7 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -363,7 +363,7 @@ function raid0() {
     elif [[ $hmd -eq 8 ]]; then
 
         filemdadm=/etc/mdadm/mdadm.conf
-        if [[ -e "$filemdadm" ]]; then
+        if [[ ! -e "$filemdadm" ]]; then
             echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
             exit
         fi
@@ -471,7 +471,7 @@ while true ;do
             echo ""
             echo -e "\e[37;1mDevices: "
             echo -e "\e[34;1m"
-            lsblk -n | awk '/NAME/ {print; next} {print "\t" $1}' | grep -vE "├─|└─" 
+            lsblk -n | awk '/NAME/ {print; next} {print "\t" $1, "(" $4 ")", $6}' | grep -vE "├─|└─" 
             echo -e "\e[0m";;
 
         *)

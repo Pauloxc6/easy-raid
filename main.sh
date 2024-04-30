@@ -54,6 +54,7 @@ while true ;do
     echo -e "\e[37;1mMenu: "
     echo -e "\t \e[37;1m1. Raid Config"
     echo -e "\t \e[37;1m2. Remove Raid"
+    echo -e "\t \e[37;1m3. Partition Config"
     echo -e "\t \e[37;1m0. Exit"
 
     echo -e "\e[0m"
@@ -68,6 +69,9 @@ while true ;do
 
         2)
             ./src/remove.sh ;;
+
+        3)
+            ./src/part.sh ;;
 
         #-----------------------------------------
        

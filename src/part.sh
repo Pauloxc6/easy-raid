@@ -4,7 +4,7 @@
 #-----------------------------
 if [[ "$(id -u)" -ne 0 ]];then
     echo -e "\e[37;1mPlease, run this program as root!\e[0m"
-    echo -e "\e[37;1mHelp: sudo bash remove.sh or sudo ./remove.sh\e[0m"
+    echo -e "\e[37;1mHelp: sudo bash part.sh or sudo ./part.sh\e[0m"
     exit 1
 fi
 
@@ -13,7 +13,7 @@ fi
 #------------------------------------
 function banner1(){
 
-    figlet Remove Raid
+    figlet Partition
     echo -e "\e[33;1mGithub: @Pauloxc6 | \t $(date) \e[0m"
 }
 
@@ -36,72 +36,13 @@ function help() {
     echo -e "\t \e[37;1mclear       | Clean the screen"
     echo -e "\t \e[37;1mback        | Go back to the root"
     echo -e "\t \e[37;1mbanner      | Activate the Banner"
-    echo -e "\t \e[37;1mshow        | Show Raids"
+    echo -e "\t \e[37;1mdevices     | Active Devices"
     echo -e "\e[0m"
 }
 
 function debug() {
     echo "Teste"
 }
-
-function sr() {
-
-    filemdadm=/etc/mdadm/mdadm.conf
-    if [[ ! -e "$filemdadm" ]]; then
-        echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
-        exit
-    fi
-
-    echo ""
-    echo -e "\e[37;1mRaids: "
-    echo -e "\e[34;1m"
-    cat /etc/mdadm/mdadm.conf | awk '/ARRAY/ {print; next} {print $0}' | grep -vE "#|HOMEHOST <system>|MAILADDR root" | sed '/^$/d' | tr -d "\n" | echo -e "\n"
-
-    savedev=$(cat /etc/mdadm/mdadm.conf | grep ARRAY | cut -d " " -f2)
-
-    if [[ -z $savedev ]]; then
-        echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
-        exit
-    else
-        continue
-    fi
-
-    echo -e "\e[37;1m\nDevices: \e[34;1m"
-    mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "$savedev:" | awk '/$savedev/ {print; next} {print "\t" $0}'
-
-    echo -e "\e[0m"
-}
-
-function rr(){
-
-    filemdadm=/etc/mdadm/mdadm.conf
-    if [[ ! -e "$filemdadm" ]]; then
-        echo -e "\e[31;1mThe \e[37;1m$filemdadm \e[31;1mdoes not exist!\e[0m"
-        exit
-    fi
-
-    savedev=$(cat /etc/mdadm/mdadm.conf | grep ARRAY | cut -d " " -f2)
-    devis=$(mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "/dev/$savedev:")
-
-    if [[ -z $savedev && -z $devis ]]; then
-        echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
-        exit
-    else
-        continue
-    fi
-
-    echo -e "\e[37;1mStop /dev/$savedev\e[0m"    
-    mdadm --stop $savedev
-
-    echo -e "\e[37;1mRemove /dev/$savedev\e[0m"    
-    mdadm --remove $savedev
-
-    for items in "${devis[@]}";do
-        echo -e "\e[37;1mZero Superblock : $items \e[37;1m"
-        mdadm --zero-superblock $items
-    done
-}
-
 
 #----------------------------
 # Main
@@ -112,7 +53,9 @@ while true ;do
     # Menu
     #----------------------------
     echo -e "\e[37;1mMenu: "
-    echo -e "\t \e[37;1m1. Remove Raid"
+    echo -e "\t \e[37;1m1. Parted"
+    echo -e "\t \e[37;1m2. Fdisk"
+    echo -e "\t \e[37;1m3. Cfdisk"
     echo -e "\t \e[37;1m0. Exit"
 
     echo -e "\e[0m"
@@ -123,7 +66,13 @@ while true ;do
     case $opt in
 
         1)
-            rr ;;
+            ./partition/part-1.sh ;;
+
+        2)
+            ./partition/part-2.sh ;;
+
+        3)
+            ./partition/part-3.sh ;;
 
         #-----------------------------------------
        
@@ -148,12 +97,15 @@ while true ;do
             echo -e "\e[37;1mVersion: 1.0\e[0m" 
             echo "" ;;
 
-        show)
-            sr ;;
+        devices)
+            echo ""
+            echo -e "\e[37;1mDevices: "
+            echo -e "\e[34;1m"
+            lsblk -n | awk '/NAME/ {print; next} {print "\t" $1, "(" $4 ")", $6}' | grep -vE "├─|└─" 
+            echo -e "\e[0m";;
 
         *)
             echo -e "\e[31;1m[*] Error in the program! [*]\n\e[0m"
-            sleep 1
             exit 1 ;;
 
     esac
