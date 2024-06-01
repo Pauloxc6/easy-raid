@@ -62,8 +62,6 @@ function sr() {
     if [[ -z $savedev ]]; then
         echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
         exit
-    else
-        continue
     fi
 
     echo -e "\e[37;1m\nDevices: \e[34;1m"
@@ -86,8 +84,6 @@ function rr(){
     if [[ -z $savedev && -z $devis ]]; then
         echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
         exit
-    else
-        continue
     fi
 
     mpoint=$(cat /etc/fstab | cut -d " " -f2 | grep /mnt/)
