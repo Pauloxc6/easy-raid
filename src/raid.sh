@@ -79,7 +79,7 @@ while true ;do
     echo -e "\t \e[37;1m2. Raid 1"
     echo -e "\t \e[37;1m3. Raid 5"
     echo -e "\t \e[37;1m4. Raid 10"
-    echo -e "\t \e[37;1m0. Exit"
+    echo -e "\t \e[37;1m0. Back"
 
     echo -e "\e[0m"
 

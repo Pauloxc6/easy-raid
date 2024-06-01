@@ -88,7 +88,7 @@ while true ;do
     #----------------------------
     echo -e "\e[37;1mMenu: "
     echo -e "\t \e[37;1m1. Cfdisk Config"
-    echo -e "\t \e[37;1m0. Exit"
+    echo -e "\t \e[37;1m0. Back"
 
     echo -e "\e[0m"
 
@@ -120,7 +120,7 @@ while true ;do
 
         version)
             echo ""
-            echo -e "\e[37;1mVersion: 1.0\e[0m" 
+            echo -e "\e[37;1mVersion: 1.1\e[0m" 
             echo "" ;;
 
         devices)

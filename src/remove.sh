@@ -62,8 +62,6 @@ function sr() {
     if [[ -z $savedev ]]; then
         echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
         exit
-    else
-        continue
     fi
 
     echo -e "\e[37;1m\nDevices: \e[34;1m"
@@ -81,13 +79,25 @@ function rr(){
     fi
 
     savedev=$(cat /etc/mdadm/mdadm.conf | grep ARRAY | cut -d " " -f2)
-    devis=$(mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "/dev/$savedev:")
+    devis=$(mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "$savedev:")
 
     if [[ -z $savedev && -z $devis ]]; then
         echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
         exit
+    fi
+
+    mpoint=$(cat /etc/fstab | cut -d " " -f2 | grep /mnt/)
+    if ! mountpoint -q -- $savedev; then
+        echo -e "\e[37;1mDevice mounted in $mp!\e[0m"
+        read -p "Deseja demostar $mp (y/n)? " yn
+        if [[ $yn = "y" ]]; then
+            umount $mpoint
+        else
+            exit 1      
+        fi  
     else
-        continue
+        echo -e "\e[31;1mDevice not mounted!\e[0m"
+        exit 1
     fi
 
     echo -e "\e[37;1mStop /dev/$savedev\e[0m"    
@@ -113,7 +123,7 @@ while true ;do
     #----------------------------
     echo -e "\e[37;1mMenu: "
     echo -e "\t \e[37;1m1. Remove Raid"
-    echo -e "\t \e[37;1m0. Exit"
+    echo -e "\t \e[37;1m0. Back"
 
     echo -e "\e[0m"
 

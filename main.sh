@@ -93,7 +93,7 @@ while true ;do
 
         version)
             echo ""
-            echo -e "\e[37;1mVersion: 1.0\e[0m" 
+            echo -e "\e[37;1mVersion: 1.1\e[0m" 
             echo "" ;;
 
         *)
