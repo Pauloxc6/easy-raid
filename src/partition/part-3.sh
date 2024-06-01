@@ -62,17 +62,13 @@ function part1() {
 
     elif [[ $opt -eq 2 ]]; then
         echo -e "\e[37;1mCreate a Patition"
-        read -p "Mode Interactive (int) or Mode Command Line Interface (cli)" mode
+        read -p "Mode Interactive (int) " mode
 
         if [[ $mode = "int" ]]; then
             read -p "Device: " dev1
             cfdisk $dev1
-
-        elif [[ $mode = "cli" ]]; then
-            continue
-
         else
-            echo -e "\e[31;1m[+] Please, choose int or cli! [+]\e[0m"
+            echo -e "\e[31;1m[+] Please, choose int! [+]\e[0m"
         fi
 
     else
@@ -92,7 +88,7 @@ while true ;do
     #----------------------------
     echo -e "\e[37;1mMenu: "
     echo -e "\t \e[37;1m1. Cfdisk Config"
-    echo -e "\t \e[37;1m0. Exit"
+    echo -e "\t \e[37;1m0. Back"
 
     echo -e "\e[0m"
 
@@ -124,7 +120,7 @@ while true ;do
 
         version)
             echo ""
-            echo -e "\e[37;1mVersion: 1.0\e[0m" 
+            echo -e "\e[37;1mVersion: 1.1\e[0m" 
             echo "" ;;
 
         devices)

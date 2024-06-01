@@ -56,7 +56,7 @@ while true ;do
     echo -e "\t \e[37;1m1. Parted"
     echo -e "\t \e[37;1m2. Fdisk"
     echo -e "\t \e[37;1m3. Cfdisk"
-    echo -e "\t \e[37;1m0. Exit"
+    echo -e "\t \e[37;1m0. Back"
 
     echo -e "\e[0m"
 
