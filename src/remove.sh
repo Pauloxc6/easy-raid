@@ -57,7 +57,7 @@ function sr() {
     echo -e "\e[34;1m"
     cat /etc/mdadm/mdadm.conf | awk '/ARRAY/ {print; next} {print $0}' | grep -vE "#|HOMEHOST <system>|MAILADDR root" | sed '/^$/d' | tr -d "\n" | echo -e "\n"
 
-    savedev=$(cat /etc/mdadm/mdadm.conf | grep ARRAY | cut -d " " -f2)
+    savedev=$(grep ARRAY /etc/mdadm/mdadm.conf | cut -d " " -f2)
 
     if [[ -z $savedev ]]; then
         echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
