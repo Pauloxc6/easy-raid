@@ -86,10 +86,12 @@ function rr(){
         exit
     fi
 
-    mpoint=$(cat /etc/fstab | cut -d " " -f2 | grep /mnt/)
-    if [[ ! mountpoint -q -- $savedev ]]; then
+    sed -i '/ARRAY/d' $filemdadm
+
+    mpoint=$(grep /mnt /etc/fstab | cut -d " " -f2)
+    if ! mountpoint -q -- '$mpoint'; then
         echo -e "\e[37;1mDevice mounted in $mpoint!\e[0m"
-        read -p "Deseja demostar $mpoint (y/n)? " yn
+        read -p "Do you want to unmount $mpoint (y/n)? " yn
         if [[ $yn = "y" ]]; then
             umount $mpoint
         else
@@ -100,11 +102,11 @@ function rr(){
         exit 1
     fi
 
-    echo -e "\e[37;1mStop $savedev\e[0m"    
-    mdadm --stop $savedev
-
     echo -e "\e[37;1mRemove $savedev\e[0m"    
     mdadm --remove $savedev
+
+    echo -e "\e[37;1mStop $savedev\e[0m"    
+    mdadm --stop $savedev
 
     for items in "${devis[@]}";do
         echo -e "\e[37;1mZero Superblock : $items \e[37;1m"
@@ -155,7 +157,7 @@ while true ;do
 
         version)
             echo ""
-            echo -e "\e[37;1mVersion: 1.0\e[0m" 
+            echo -e "\e[37;1mVersion: 1.1\e[0m" 
             echo "" ;;
 
         show)
