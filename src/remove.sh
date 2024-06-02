@@ -64,7 +64,7 @@ function sr() {
         exit
     fi
 
-    echo -e "\e[37;1m\nDevices: \e[34;1m"
+    echo -e "\n\e[37;1m\nDevices: \e[34;1m"
     mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "$savedev:" | awk '/$savedev/ {print; next} {print "\t" $0}'
 
     echo -e "\e[0m"
@@ -87,9 +87,9 @@ function rr(){
     fi
 
     mpoint=$(cat /etc/fstab | cut -d " " -f2 | grep /mnt/)
-    if ! mountpoint -q -- $savedev; then
-        echo -e "\e[37;1mDevice mounted in $mp!\e[0m"
-        read -p "Deseja demostar $mp (y/n)? " yn
+    if [[ ! mountpoint -q -- $savedev ]]; then
+        echo -e "\e[37;1mDevice mounted in $mpoint!\e[0m"
+        read -p "Deseja demostar $mpoint (y/n)? " yn
         if [[ $yn = "y" ]]; then
             umount $mpoint
         else
@@ -100,10 +100,10 @@ function rr(){
         exit 1
     fi
 
-    echo -e "\e[37;1mStop /dev/$savedev\e[0m"    
+    echo -e "\e[37;1mStop $savedev\e[0m"    
     mdadm --stop $savedev
 
-    echo -e "\e[37;1mRemove /dev/$savedev\e[0m"    
+    echo -e "\e[37;1mRemove $savedev\e[0m"    
     mdadm --remove $savedev
 
     for items in "${devis[@]}";do

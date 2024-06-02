@@ -60,7 +60,7 @@ function sr() {
 
     savedev=$(cat /etc/mdadm/mdadm.conf | grep ARRAY | cut -d " " -f2)
 
-    echo -e "\e[37;1mDevices: \e[34;1m"
+    echo -e "\n\e[37;1mDevices: \e[34;1m"
     mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "$savedev:" | awk '/$savedev/ {print; next} {print "\t" $0}'
 
     echo -e "\e[0m"
