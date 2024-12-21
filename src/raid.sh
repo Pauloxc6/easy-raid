@@ -23,6 +23,9 @@ banner1
 # Var
 #----------------------------
 
+export LANG=C
+export LC_ALL=C 
+
 #-----------------------------------
 # Functions
 #-----------------------------------
@@ -60,7 +63,7 @@ function sr() {
 
     savedev=$(cat /etc/mdadm/mdadm.conf | grep ARRAY | cut -d " " -f2)
 
-    echo -e "\e[37;1mDevices: \e[34;1m"
+    echo -e "\n\e[37;1mDevices: \e[34;1m"
     mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "$savedev:" | awk '/$savedev/ {print; next} {print "\t" $0}'
 
     echo -e "\e[0m"
@@ -120,7 +123,7 @@ while true ;do
 
         version)
             echo ""
-            echo -e "\e[37;1mVersion: 1.0\e[0m" 
+            echo -e "\e[37;1mVersion: 1.2\e[0m" 
             echo "" ;;
 
         show)

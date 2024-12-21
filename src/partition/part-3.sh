@@ -22,9 +22,10 @@ banner1
 # Var
 #----------------------------
 
-fsys=ext4
-dev1=/dev/sda
-
+export fsys=ext4
+export dev1=/dev/sda
+export LANG=C
+export LC_ALL=C 
 
 #-----------------------------------
 # Functions

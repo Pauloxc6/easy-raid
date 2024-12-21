@@ -23,6 +23,9 @@ banner1
 # Var
 #----------------------------
 
+export LANG=C
+export LC_ALL=C 
+
 #-----------------------------------
 # Functions
 #-----------------------------------
@@ -66,13 +69,13 @@ while true ;do
     case $opt in
 
         1)
-            ./partition/part-1.sh ;;
+            ./src/partition/part-1.sh ;;
 
         2)
-            ./partition/part-2.sh ;;
+            ./src/partition/part-2.sh ;;
 
         3)
-            ./partition/part-3.sh ;;
+            ./src/partition/part-3.sh ;;
 
         #-----------------------------------------
        
@@ -94,7 +97,7 @@ while true ;do
 
         version)
             echo ""
-            echo -e "\e[37;1mVersion: 1.0\e[0m" 
+            echo -e "\e[37;1mVersion: 1.2\e[0m" 
             echo "" ;;
 
         devices)

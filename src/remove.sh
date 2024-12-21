@@ -23,6 +23,9 @@ banner1
 # Var
 #----------------------------
 
+export LANG=C
+export LC_ALL=C 
+
 #-----------------------------------
 # Functions
 #-----------------------------------
@@ -57,14 +60,14 @@ function sr() {
     echo -e "\e[34;1m"
     cat /etc/mdadm/mdadm.conf | awk '/ARRAY/ {print; next} {print $0}' | grep -vE "#|HOMEHOST <system>|MAILADDR root" | sed '/^$/d' | tr -d "\n" | echo -e "\n"
 
-    savedev=$(cat /etc/mdadm/mdadm.conf | grep ARRAY | cut -d " " -f2)
+    savedev=$(grep ARRAY /etc/mdadm/mdadm.conf | cut -d " " -f2)
 
     if [[ -z $savedev ]]; then
         echo -e "\e[31;1mThe file \e[37;1m/etc/mdadm/mdadm \e[31;1mnot found or file void!\e[0m"
         exit
     fi
 
-    echo -e "\e[37;1m\nDevices: \e[34;1m"
+    echo -e "\n\e[37;1m\nDevices: \e[34;1m"
     mdadm --detail $savedev | grep -o "/dev/[^ ]*" | grep -v "$savedev:" | awk '/$savedev/ {print; next} {print "\t" $0}'
 
     echo -e "\e[0m"
@@ -86,10 +89,12 @@ function rr(){
         exit
     fi
 
-    mpoint=$(cat /etc/fstab | cut -d " " -f2 | grep /mnt/)
-    if ! mountpoint -q -- $savedev; then
-        echo -e "\e[37;1mDevice mounted in $mp!\e[0m"
-        read -p "Deseja demostar $mp (y/n)? " yn
+    sed -i '/ARRAY/d' $filemdadm
+
+    mpoint=$(grep /mnt /etc/fstab | cut -d " " -f2)
+    if ! mountpoint -q -- '$mpoint'; then
+        echo -e "\e[37;1mDevice mounted in $mpoint!\e[0m"
+        read -p "Do you want to unmount $mpoint (y/n)? " yn
         if [[ $yn = "y" ]]; then
             umount $mpoint
         else
@@ -100,11 +105,11 @@ function rr(){
         exit 1
     fi
 
-    echo -e "\e[37;1mStop /dev/$savedev\e[0m"    
-    mdadm --stop $savedev
-
-    echo -e "\e[37;1mRemove /dev/$savedev\e[0m"    
+    echo -e "\e[37;1mRemove $savedev\e[0m"    
     mdadm --remove $savedev
+
+    echo -e "\e[37;1mStop $savedev\e[0m"    
+    mdadm --stop $savedev
 
     for items in "${devis[@]}";do
         echo -e "\e[37;1mZero Superblock : $items \e[37;1m"
@@ -155,7 +160,7 @@ while true ;do
 
         version)
             echo ""
-            echo -e "\e[37;1mVersion: 1.0\e[0m" 
+            echo -e "\e[37;1mVersion: 1.2\e[0m" 
             echo "" ;;
 
         show)
