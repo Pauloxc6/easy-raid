@@ -149,7 +149,7 @@ if [[ $os = "Debian" && $os = "Ubuntu" ]];then
 
     if ! [[ -x "$(command -v cfdisk)" ]]; then
         echo -e '\e[37;1m[-] cfdisk not instaled [-]\e[0m' >&2
-        apt install figlet
+        apt install cdfisk
     else
         echo -e "\e[34;1m[-] Install cfdisk \e[0m(\e[32;1mOk\e[0m)\e[34;1m[-] \e[0m"
     fi
@@ -180,7 +180,7 @@ if [[ $os = "VoidLinux" ]];then
 
     if ! [[ -x "$(command -v cfdisk)" ]]; then
         echo -e '\e[37;1m[-] cfdisk not instaled [-]\e[0m' >&2
-        xbps-install -SY figlet
+        xbps-install -SY cfdisk
     else
         echo -e "\e[34;1m[-] Install cfdisk \e[0m(\e[32;1mOk\e[0m)\e[34;1m[-] \e[0m"
     fi
@@ -211,7 +211,7 @@ if [[ $os_bsd = "FreeBSD" ]];then
 
     if ! [[ -x "$(command -v cfdisk)" ]]; then
         echo -e '\e[37;1m[-] cfdisk not instaled [-]\e[0m' >&2
-        pkg install figlet
+        pkg install cfdisk
     else
         echo -e "\e[34;1m[-] Install cfdisk \e[0m(\e[32;1mOk\e[0m)\e[34;1m[-] \e[0m"
     fi

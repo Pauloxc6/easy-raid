@@ -23,6 +23,9 @@ banner1
 # Var
 #----------------------------
 
+export LANG=C
+export LC_ALL=C 
+
 #-----------------------------------
 # Functions
 #-----------------------------------
@@ -157,7 +160,7 @@ while true ;do
 
         version)
             echo ""
-            echo -e "\e[37;1mVersion: 1.1\e[0m" 
+            echo -e "\e[37;1mVersion: 1.2\e[0m" 
             echo "" ;;
 
         show)
